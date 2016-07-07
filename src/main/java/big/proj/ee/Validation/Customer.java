@@ -1,8 +1,7 @@
 package big.proj.ee.Validation;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.xml.internal.ws.wsdl.writer.document.http.Address;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -12,7 +11,8 @@ import java.util.Date;
  */
 public class Customer {
 
-    @NotNull @Size(min = 2)
+    @NotNull
+    @Size(min = 2)
     private String firstName;
     private String lastName;
     @Email

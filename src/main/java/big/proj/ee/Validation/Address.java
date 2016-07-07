@@ -1,6 +1,7 @@
 package big.proj.ee.Validation;
 
-import com.sun.istack.internal.NotNull;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Влад on 24.06.2016.
