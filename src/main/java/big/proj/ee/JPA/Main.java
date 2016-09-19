@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Main {
 
     public static void main(String[] args) {
-        Book book = new Book("H2G2", "Игры в которые играют люди", 17.5F, "1-84023-742-2", 354, false);
+        BookR book = new BookR("H2G2", "Игры в которые играют люди", 17.5F, "1-84023-742-2", 354, false);
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA");
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();

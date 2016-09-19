@@ -7,8 +7,9 @@
 
     <persistence-unit name="JPA" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>big.proj.ee.JPA.Book</class>
+        <class>big.proj.ee.JPA.BookR</class>
         <properties>
+            <property name="eclipselink.canonicalmodel.subpackage" value="JPA"/>
             <property name="javax.persistence.jdbc.driver"
                       value="org.apache.derby.jdbc.ClientDriver"/>
             <property name="javax.persistence.jdbc.url"
@@ -28,9 +29,20 @@
         </properties>
     </persistence-unit>
 
+    <persistence-unit name="EJB" transaction-type="JTA">
+        <jta-data-source>java:global/jdbc/EJBcon</jta-data-source>
+        <class>big.proj.ee.EJB.Book</class>
+        <properties>
+            <property name="eclipselink.canonicalmodel.subpackage" value="EJB"/>
+            <property name="eclipselink.target-database" value="DERBY"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-createtables"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
+        </properties>
+    </persistence-unit>
+
     <persistence-unit name="JPATest" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>big.proj.ee.JPA.Book</class>
+        <class>big.proj.ee.JPA.BookR</class>
         <properties>
             <property name="javax.persistence.schema-generation.database.action"
                       value="drop-and-create"/>

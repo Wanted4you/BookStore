@@ -1,26 +1,29 @@
-package big.proj.ee.JPA;
+package big.proj.ee.EJB;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 
 /**
- * Created by Влад on 30.06.2016.
+ * Created by Влад on 20.07.2016.
  */
-@Entity
-@NamedQueries({
-        @NamedQuery(name = "findAllBooks", query = "SELECT b FROM BookR b"),
-        @NamedQuery(name = "findBookH2G2", query = "SELECT b FROM BookR b WHERE b.title = 'H2G2'")
-})
-public class Book {
-    @Id @GeneratedValue
+@Entity(name = "BookEJB")
+@NamedQuery(name = "FIND_ALL", query = "SELECT b FROM BookR b ORDER BY b.title DESC")
+public class Book implements Serializable{
+
+    public static final String FIND_ALL = "BookR.findAllBooks";
+
+    @Id@GeneratedValue
     private Long id;
 
     @NotNull
+    @Column(nullable = false)
     private String title;
     private Float price;
 
-    @Size(min = 10, max = 2000)
+    @Size(max = 2000)
+    @Column(length = 2000)
     private String description;
     private String isbn;
     private Integer nbOfPage;
@@ -29,7 +32,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String description, Float price, String isbn, Integer nbOfPage, Boolean illustrations) {
+    public Book(String title, Float price, String description, String isbn, Integer nbOfPage, Boolean illustrations) {
         this.title = title;
         this.price = price;
         this.description = description;

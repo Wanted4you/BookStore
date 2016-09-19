@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa</artifactId>
-            <version>2.5.0</version>
+            <version>2.6.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
@@ -47,6 +47,23 @@
             <version>10.12.1.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.main.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>4.1.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>6.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.9.10</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -54,7 +71,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>2.5.1</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
@@ -70,6 +87,15 @@
                         <goals>
                             <goal>java</goal>
                         </goals>
+                        <!--<goals>-->
+                            <!--<goal>wsimport</goal>-->
+                        <!--</goals>-->
+                            <!--<wsdlUrls>-->
+                                <!--<wsdlUrl>-->
+                                    <!--http://localhost:8080/chapter14-service-1.0/CardValidatorService?wsdl-->
+                                <!--</wsdlUrl>-->
+                            <!--</wsdlUrls>-->
+                            <!--<keep>true</keep>-->
                     </execution>
                 </executions>
                 <configuration>

@@ -1,18 +1,21 @@
-package big.proj.ee.JPA;
+package big.proj.ee.REST;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 /**
  * Created by Влад on 30.06.2016.
  */
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "findAllBooks", query = "SELECT b FROM BookR b"),
-        @NamedQuery(name = "findBookH2G2", query = "SELECT b FROM BookR b WHERE b.title = 'H2G2'")
-})
-public class Book {
+@XmlRootElement
+@NamedQuery(name = BookR.FIND_ALL, query = "SELECT b FROM BookR b")
+public class BookR {
+
+    public static final String FIND_ALL = "Book.findAll";
+
     @Id @GeneratedValue
     private Long id;
 
@@ -26,16 +29,19 @@ public class Book {
     private Integer nbOfPage;
     private Boolean illustrations;
 
-    public Book() {
+    public BookR(List<BookR> resultList) {
     }
 
-    public Book(String title, String description, Float price, String isbn, Integer nbOfPage, Boolean illustrations) {
+    public BookR(String title, String description, Float price, String isbn, Integer nbOfPage, Boolean illustrations) {
         this.title = title;
         this.price = price;
         this.description = description;
         this.isbn = isbn;
         this.nbOfPage = nbOfPage;
         this.illustrations = illustrations;
+    }
+
+    public BookR() {
     }
 
     public Long getId() {
